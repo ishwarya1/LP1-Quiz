@@ -37,15 +37,35 @@ MyAdapter adapter;
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                data.add(edt.getText().toString().trim());
+                data.add(edt.getText().toString().trim()+"@"+ getDate());
                 adapter=new MyAdapter(MainActivity.this,data);
                 list.setAdapter(adapter);
                 edt.setText("");
 
             }
         });
+
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int pos, long l) {
+
+
+                Intent obj=new Intent(MainActivity.this,DetailActivity.class);
+                obj.putExtra("vals",data.get(pos));
+                startActivity(obj);
+
+            }
+        });
+
+
     }
 
-
+    protected String getDate(){
+        Date c = Calendar.getInstance().getTime();
+        SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss");
+        String formattedDate = df.format(c);
+        Log.i("Today's date : ", formattedDate);
+        return formattedDate;
+    }
 
 }

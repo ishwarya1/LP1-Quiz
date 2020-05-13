@@ -44,8 +44,10 @@ public class MyAdapter extends BaseAdapter {
             TextView tv1 = myview.findViewById(R.id.tv2);
             TextView tv2 = myview.findViewById(R.id.tv3);
 
-            tv1.setText(getDate());
-            tv2.setText(data.get(pos));
+            String vals[]=data.get(pos).split("@");
+
+            tv1.setText(vals[1].toString());
+            tv2.setText(vals[0].toString());
             return myview;
 
 
@@ -55,11 +57,5 @@ public class MyAdapter extends BaseAdapter {
         }
     }
 
-    protected String getDate(){
-        Date c = Calendar.getInstance().getTime();
-        SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss");
-        String formattedDate = df.format(c);
-        Log.i("Today's date : ", formattedDate);
-        return formattedDate;
-    }
+
 }
