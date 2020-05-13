@@ -30,8 +30,9 @@ public class DetailActivity extends AppCompatActivity {
                 intent.setType("message/rfc822");
                 intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"jason_lim@rp.edu.sg"});
                 intent.putExtra(Intent.EXTRA_SUBJECT, "LP1 Quiz:18016638");
-                intent.putExtra(Intent.EXTRA_TEXT, "Date Created :"+ tvInfo.getText().toString().trim());
+                intent.putExtra(Intent.EXTRA_SUBJECT, "Date Created :"+ tvInfo.getText().toString().trim());
 
+                intent.setType("message/rfc822");
                 startActivity(Intent.createChooser(intent, "Send Email"));
             }
         });
